@@ -117,7 +117,11 @@ var HomePage = React.createClass({
             user: [],
             userEmail: "",
             userPassword: ""
-        }
+        };
+    },
+
+    componentWillMount: function() {
+      getUser(this.state.user);
     },
 
     componentDidMount: function() {
@@ -142,17 +146,26 @@ var HomePage = React.createClass({
     validateUser: function() {
         if(this.state.user.email === this.state.userEmail
            && this.state.user.password === this.state.userPassword) {
-            window.location.assign("#users/" + this.state.user.id);
+             saveUser(this.state.user);
+             window.location.assign("#users/" + this.state.user.id);
         } else {
             alert("NG");
         };
     },
 
     render: function() {
+        var loginCondition;
+        if(this.state.user.email){
+          alert(this.state.user.email);
+          alert(this.state.user.pic);
+          loginCondition = <UserInfo user={this.state.user}/>
+        } else{
+          loginCondition = <EmailInput searchUser={this.searchUser} />
+        }
         return(
             <div >
               <HeaderImg url = {url} />
-              <EmailInput searchUser={this.searchUser} />
+              {loginCondition}
               <PasswordInput getPassword={this.getPassword} />
               <NextButton text="Next" validateUser={this.validateUser} />
               <HelpLink text="Need help?" />
@@ -160,6 +173,18 @@ var HomePage = React.createClass({
             </div>
         );
     }
+});
+
+var UserInfo= React.createClass({
+  render: function(){
+    return(
+          <div>
+            <img src={this.props.user.pic} />
+            <p>{this.props.user.firstName} {this.props.user.lastName}</p>
+            <p>{this.props.user.email}</p>
+          </div>
+    );
+  }
 });
 
 var UserPage = React.createClass({

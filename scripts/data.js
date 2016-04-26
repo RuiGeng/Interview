@@ -42,8 +42,8 @@ userService = (function() {
     "lastName": "Geng",
     "email": "gengr.r@gmail.com",
     "password": "12345678",
-    "pic": "imgs/jeff-pic.png",
-    "icon": "imgs/nav/jeff-copy.png"
+    "pic": "imgs/rui.png",
+    "icon": "imgs/nav/rui-copy.png"
    }];
 
  return {
