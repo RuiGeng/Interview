@@ -112,16 +112,16 @@ var Footer = React.createClass({
 });
 
 var HomePage = React.createClass({
-    componentDidMount: function() {
-      document.title = this.props.title;
-    },
-
     getInitialState: function() {
         return {
             user: [],
             userEmail: "",
             userPassword: ""
         }
+    },
+
+    componentDidMount: function() {
+      document.title = this.props.title;
     },
 
     searchUser: function(email) {
@@ -142,7 +142,6 @@ var HomePage = React.createClass({
     validateUser: function() {
         if(this.state.user.email === this.state.userEmail
            && this.state.user.password === this.state.userPassword) {
-            alert("Okay");
             window.location.assign("#users/" + this.state.user.id);
         } else {
             alert("NG");
@@ -164,13 +163,24 @@ var HomePage = React.createClass({
 });
 
 var UserPage = React.createClass({
+    getInitialState: function() {
+        return {
+            user: []
+        }
+    },
+
     componentDidMount: function() {
       document.title = this.props.title;
+
+      this.props.service.findById(this.props.userId).done(function(result) {
+        this.setState({user: result});
+      }.bind(this));
     },
 
     render: function() {
         return(
             <div>
+                <NavBar user={this.state.user}/>
                 <HeaderImg url = {url} />
                 <ApplicationList applications= {imgs} />
                 <Footer />
@@ -178,6 +188,20 @@ var UserPage = React.createClass({
         );
     }
 });
+
+var NavBar = React.createClass({
+    render: function(){
+      return(
+        <nav>
+          <a href="#"><img alt="help" src="imgs/nav/help.png" /></a>
+          <a href="#"><img alt="notifications" src="imgs/nav/notifications.png" /></a>
+          <a href="#"><img alt="apps" src="imgs/nav/apps.png" /></a>
+          <a href="#"><img alt="icon" src={this.props.user.icon} /></a>
+        </nav>
+      );
+    }
+});
+
 
 router.addRoute('', function() {
     ReactDOM.render(
