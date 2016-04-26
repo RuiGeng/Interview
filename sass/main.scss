@@ -1,0 +1,68 @@
+$darkish-blue: #00479f;
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    margin-top: 60px;
+    .headerimg {
+        img {
+            width: 250px;
+            height: 123.5px;
+        }
+    }
+    .emailinput {
+        margin-top: 178.5px;
+        input {
+            background: url("../imgs/input/group-2.png");
+            background-repeat: no-repeat;
+            background-position: 15px 16px;
+        }
+    }
+    .passwordinput {
+        margin-top: 20px;
+        input {
+            background: url("../imgs/input/group.png");
+            background-repeat: no-repeat;
+            background-position: 15px 16px;
+        }
+    }
+    .nextbutton {
+        margin-top: 30px;
+        button {
+            width: 300px;
+            height: 55px;
+            border: 0;
+            border-radius: 100px;
+            background-color: #00479f;
+            font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-size: 17px;
+            color: #ffffff;
+        }
+    }
+    .helplink {
+        margin-top: 10px;
+        font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-size: 13px;
+        color: $darkish-blue;
+    }
+
+    footer{
+      font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-size: 12px;
+      color: #000000;
+      position:absolute;
+      margin-top: 130px;
+      width:100%;
+    }
+
+    input {
+        width: 300px;
+        height: 55px;
+        border-radius: 100px;
+        border: solid 1px $darkish-blue;
+        font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-size: 14px;
+        color: #000000;
+        padding-left: 50px;
+        padding-top: 2px;
+    }
+}

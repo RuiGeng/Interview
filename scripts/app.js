@@ -1,8 +1,8 @@
 var HeaderImg = React.createClass({
     render: function() {
         return(
-            <div className = "headerimg" >
-              <img src = {this.props.url} />
+            <div className = "headerimg row" >
+              <img className = "center-block" src = {this.props.url} />
             </div>
         );
     }
@@ -25,8 +25,8 @@ var EmailInput = React.createClass({
 
     render: function() {
         return(
-          <div className = "emailinput" >
-            <input type = "email" placeholder="EMAIL" onBlur={this.getUserEmail} />
+          <div className = "emailinput row" >
+            <input type = "email" className = "center-block" placeholder="EMAIL" onBlur={this.getUserEmail} />
           </div>
         );
     }
@@ -49,8 +49,8 @@ var PasswordInput = React.createClass({
 
     render: function() {
         return(
-            <div className = "passwordinput" >
-              <input type = "password" placeholder="PASSWORD" onBlur={this.getUserPassword} />
+            <div className = "passwordinput row" >
+              <input type = "password" className = "center-block" placeholder="PASSWORD" onBlur={this.getUserPassword} />
             </div>
         );
     }
@@ -59,8 +59,8 @@ var PasswordInput = React.createClass({
 var NextButton = React.createClass({
     render: function() {
         return(
-            <div className = "nextbutton" >
-              <button type="button" onClick={this.props.validateUser}>{this.props.text}</button>
+            <div className = "nextbutton row" >
+              <button type="button" className = "center-block" onClick={this.props.validateUser}>{this.props.text}</button>
             </div>
         );
     }
@@ -69,7 +69,7 @@ var NextButton = React.createClass({
 var HelpLink = React.createClass({
     render: function() {
         return(
-            <div className = "helplink" >
+            <div className = "helplink row text-center" >
               <a href="#">{this.props.text}</a>
             </div>
         );
@@ -104,7 +104,7 @@ var ApplicationList = React.createClass({
 var Footer = React.createClass({
     render: function() {
         return(
-            <footer>
+            <footer className = "row text-center">
               <p>&copy; Scientific Technologies Corporation 2016</p>
             </footer>
         );
@@ -156,8 +156,6 @@ var HomePage = React.createClass({
     render: function() {
         var loginCondition;
         if(this.state.user.email){
-          alert(this.state.user.email);
-          alert(this.state.user.pic);
           loginCondition = <UserInfo user={this.state.user}/>
         } else{
           loginCondition = <EmailInput searchUser={this.searchUser} />
@@ -167,7 +165,7 @@ var HomePage = React.createClass({
               <HeaderImg url = {url} />
               {loginCondition}
               <PasswordInput getPassword={this.getPassword} />
-              <NextButton text="Next" validateUser={this.validateUser} />
+              <NextButton text="NEXT" validateUser={this.validateUser} />
               <HelpLink text="Need help?" />
               <Footer />
             </div>
