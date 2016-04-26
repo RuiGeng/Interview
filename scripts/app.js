@@ -1,9 +1,11 @@
+var url = 'imgs/washington-department-of-health-2151214158-std.png';
+
 var HeaderImg = React.createClass({
     render: function() {
-        return (
-          <div className = "headerimg" >
-            <img src = {this.props.url} />
-          </div>
+        return(
+            <div className = "headerimg" >
+              <img src = {this.props.url} />
+            </div>
         );
     }
 });
@@ -11,84 +13,151 @@ var HeaderImg = React.createClass({
 var EmailInput = React.createClass({
     getInitialState: function() {
         return {
-            email: ""
+            userEmail: ""
         };
     },
 
-    searchHandler: function(event){
-      var email = event.target.value;
-      this.setState({
-        email: email
-      });
+    getUserEmail: function(event) {
+        var email = event.target.value;
+        this.setState({
+            userEmail: email
+        });
+        this.props.searchUser(email);
     },
 
     render: function() {
-        return (
+        return(
           <div className = "emailinput" >
-            <input type = "email" placeholder="EMAIL" />
+            <input type = "email" placeholder="EMAIL" onBlur={this.getUserEmail} />
           </div>
         );
     }
 });
 
 var PasswordInput = React.createClass({
-    render: function() {
-        return (
-          <div className = "passwordinput" >
-            <input type = "password" placeholder="PASSWORD" />
-          </div>
-        );
-      }
-});
+    getInitialState: function() {
+        return {
+            password: ""
+        };
+    },
 
-var NextButton = React.createClass({
-    render: function() {
-        return (
-          <div className = "nextbutton" >
-            <button type="button">{this.props.text}</button>
-          </div>
-        );
-      }
-});
+    getUserPassword: function(event) {
+        var passwd = event.target.value;
+        this.setState({
+            password: passwd
+        });
+        this.props.getPassword(passwd);
+    },
 
-var HelpLink = React.createClass({
     render: function() {
-        return (
-          <div className = "helplink" >
-            <a href="#">{this.props.text}</a>
-          </div>
-        );
-      }
-});
-
-var Footer = React.createClass({
-    render: function() {
-        return (
-          <footer>
-            <p>&copy; Scientific Technologies Corporation 2016</p>
-          </footer>
-        );
-      }
-});
-
-var HomePage = React.createClass({
-    render: function() {
-        var url = 'imgs/washington-department-of-health-2151214158-std.png';
-
-        return (
-          <div >
-            <HeaderImg url = {url}/>
-            <EmailInput />
-            <PasswordInput />
-            <NextButton text="Next" />
-            <HelpLink text="Need help?" />
-            <Footer />
-          </div>
+        return(
+            <div className = "passwordinput" >
+              <input type = "password" placeholder="PASSWORD" onBlur={this.getUserPassword} />
+            </div>
         );
     }
 });
 
-ReactDOM.render(
-  <HomePage /> ,
-  document.getElementById('container')
-);
+var NextButton = React.createClass({
+    render: function() {
+        return(
+            <div className = "nextbutton" >
+              <button type="button" onClick={this.props.validateUser}>{this.props.text}</button>
+            </div>
+        );
+    }
+});
+
+var HelpLink = React.createClass({
+    render: function() {
+        return(
+            <div className = "helplink" >
+              <a href="#">{this.props.text}</a>
+            </div>
+        );
+    }
+});
+
+var Footer = React.createClass({
+    render: function() {
+        return(
+            <footer>
+              <p>&copy; Scientific Technologies Corporation 2016</p>
+            </footer>
+        );
+    }
+});
+
+var HomePage = React.createClass({
+    getInitialState: function() {
+        return {
+            user: [],
+            userEmail: "",
+            userPassword: ""
+        }
+    },
+
+    searchUser: function(email) {
+        this.props.service.findByEmail(email).done(function(result) {
+            this.setState({
+                userEmail: email,
+                user: result,
+            });
+        }.bind(this));
+    },
+
+    getPassword: function(passwd) {
+        this.setState({
+            userPassword: passwd
+        });
+    },
+
+    validateUser: function() {
+        if(this.state.user.email === this.state.userEmail
+           && this.state.user.password === this.state.userPassword) {
+            alert("Okay");
+            window.location.assign("#users/" + this.state.user.id);
+        } else {
+            alert("NG");
+        };
+    },
+
+    render: function() {
+        return(
+            <div >
+              <HeaderImg url = {url} />
+              <EmailInput searchUser={this.searchUser} />
+              <PasswordInput getPassword={this.getPassword} />
+              <NextButton text="Next" validateUser={this.validateUser} />
+              <HelpLink text="Need help?" />
+              <Footer />
+            </div>
+        );
+    }
+});
+
+var UserPage = React.createClass({
+
+    render: function() {
+        return(
+            <div>
+                <HeaderImg url = {url} />
+            </div>
+        );
+    }
+});
+
+router.addRoute('', function() {
+    ReactDOM.render(
+        <HomePage service={userService}/>,
+        document.getElementById('container')
+    );
+});
+
+router.addRoute('users/:id', function(id) {
+    ReactDOM.render(
+        <UserPage userId={id} service={userService}/>,
+        document.getElementById('container')
+    );
+});
+router.start();

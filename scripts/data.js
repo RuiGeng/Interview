@@ -14,21 +14,23 @@ userService = (function() {
             return deferred.promise();
         },
 
-        users = [{
-            "id": 1,
-            "firstName": "Jeffery",
-            "lastName": "Aramini",
-            "email": "jeff_aramini@ihealthsolutions.net",
-            "pic": "imgs/jeff-pic.png",
-        }, {
-          "id": 2,
-          "firstName": "Rui",
-          "lastName": "Geng",
-          "email": "gengr.r@gmail.com",
-          "pic": "imgs/jeff-pic.png",
-        }];
+        users = [
+            {
+                "id": 1,
+                "firstName": "Jeffery",
+                "lastName": "Aramini",
+                "email": "jeff_aramini@ihealthsolutions.net",
+                "password": "12345678",
+                "pic": "imgs/jeff-pic.png"
+            }, {
+                "id": 2,
+                "firstName": "Rui",
+                "lastName": "Geng",
+                "email": "gengr.r@gmail.com",
+                "password": "12345678",
+                "pic": "imgs/jeff-pic.png"
+            }
+        ];
 
-    return {
-        findByEmail: findByEmail
-    };
+    return {findByEmail: findByEmail};
 }());
