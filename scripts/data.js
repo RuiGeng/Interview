@@ -34,3 +34,17 @@ userService = (function() {
 
     return {findByEmail: findByEmail};
 }());
+
+var url = 'imgs/washington-department-of-health-2151214158-std.png';
+
+var imgs = [
+  {"id": 1, "src": "imgs/group-1.png"},
+  {"id": 2, "src": "imgs/page-1.png"},
+  {"id": 3, "src": "imgs/group-2.png"},
+  {"id": 4, "src": "imgs/page-2.png"},
+  {"id": 5, "src": "imgs/group-3.png"},
+  {"id": 6, "src": "imgs/page-3.png"},
+  {"id": 7, "src": "imgs/group-4.png"},
+  {"id": 8, "src": "imgs/page-4.png"},
+  {"id": 9, "src": "imgs/group-5.png"}
+];

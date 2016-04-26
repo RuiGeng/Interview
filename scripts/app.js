@@ -1,5 +1,3 @@
-var url = 'imgs/washington-department-of-health-2151214158-std.png';
-
 var HeaderImg = React.createClass({
     render: function() {
         return(
@@ -78,6 +76,31 @@ var HelpLink = React.createClass({
     }
 });
 
+var ApplicationListItem = React.createClass({
+    render: function () {
+        return (
+          <div className = "headerimg" >
+            <img src = {this.props.application.src} />
+          </div>
+        );
+    }
+});
+
+var ApplicationList = React.createClass({
+    render: function () {
+        var items = this.props.applications.map(function (application) {
+            return (
+                <ApplicationListItem key={application.id} application={application} />
+            );
+        });
+        return (
+            <ul>
+                {items}
+            </ul>
+        );
+    }
+});
+
 var Footer = React.createClass({
     render: function() {
         return(
@@ -89,6 +112,10 @@ var Footer = React.createClass({
 });
 
 var HomePage = React.createClass({
+    componentDidMount: function() {
+      document.title = this.props.title;
+    },
+
     getInitialState: function() {
         return {
             user: [],
@@ -137,11 +164,16 @@ var HomePage = React.createClass({
 });
 
 var UserPage = React.createClass({
+    componentDidMount: function() {
+      document.title = this.props.title;
+    },
 
     render: function() {
         return(
             <div>
                 <HeaderImg url = {url} />
+                <ApplicationList applications= {imgs} />
+                <Footer />
             </div>
         );
     }
@@ -149,14 +181,14 @@ var UserPage = React.createClass({
 
 router.addRoute('', function() {
     ReactDOM.render(
-        <HomePage service={userService}/>,
+        <HomePage title="Login" service={userService}/>,
         document.getElementById('container')
     );
 });
 
 router.addRoute('users/:id', function(id) {
     ReactDOM.render(
-        <UserPage userId={id} service={userService}/>,
+        <UserPage title="Dashboard" userId={id} service={userService}/>,
         document.getElementById('container')
     );
 });
