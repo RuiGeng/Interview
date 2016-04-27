@@ -35,6 +35,7 @@ body {
             background-color: #00479f;
             font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
             font-size: 17px;
+            font-weight: bold;
             color: #ffffff;
         }
     }
@@ -44,6 +45,50 @@ body {
         font-size: 13px;
         color: $darkish-blue;
     }
+    .userinfo{
+      font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-size: 20px;
+      color: #000000;
+      img{
+        width: 100px;
+        height: 100px;
+        margin-top: 52.5px;
+      }
+      .p1{
+        font-weight: bold;
+        margin-top: 30px;
+        margin-bottom: -8px;
+      }
+      .p2 {
+      }
+    }
+    .navbar{
+      margin-top: 20px;
+      img{
+        width: 20px;
+        height: 20px;
+        margin-top: 12px;
+        margin-right: 0px;
+        margin-left: -15px;
+      }
+      .img4{
+        width: 40px;
+        height: 40px;
+        margin-top: 0px;
+        margin-right: 20px;
+      }
+    }
+    .applicationcontainer{
+      width: 550px;
+    }
+    .application{
+      width: 130px;
+      height: 130px;
+      background-color: #ffffff;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+      margin: 20px;
+    }
+
     footer {
         font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
         font-size: 12px;
@@ -62,34 +107,5 @@ body {
         color: #000000;
         padding-left: 50px;
         padding-top: 2px;
-    }
-}
-
-.invalid {
-    outline-color: red;
-    -webkit-animation: shake 0.6s linear;
-}
-
-@-webkit-keyframes shake {
-    0% {
-        left: -10px;
-    }
-    16% {
-        left: 9px;
-    }
-    33% {
-        left: -6px;
-    }
-    50% {
-        left: 5px;
-    }
-    66% {
-        left: -2px;
-    }
-    83% {
-        left: 1px;
-    }
-    100% {
-        left: 0;
     }
 }

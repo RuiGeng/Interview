@@ -79,7 +79,7 @@ var HelpLink = React.createClass({
 var ApplicationListItem = React.createClass({
     render: function () {
         return (
-          <div className = "headerimg" >
+          <div className = "col-lg-4 col-md-4 col-sm-4 col-xs-6 application" >
             <img src = {this.props.application.src} />
           </div>
         );
@@ -94,9 +94,11 @@ var ApplicationList = React.createClass({
             );
         });
         return (
-            <ul>
-                {items}
-            </ul>
+          <div className="applicationcontainer center-block">
+            <div className="row">
+              {items}
+            </div>
+          </div>
         );
     }
 });
@@ -114,7 +116,13 @@ var Footer = React.createClass({
 var HomePage = React.createClass({
     getInitialState: function() {
         return {
-            user: {firstName: "", lastName: "", email: "", pic: ""},
+            user: { id: "",
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    password: "",
+                    pic: "",
+                    icon: ""},
             userEmail: "",
             userPassword: ""
         };
@@ -122,15 +130,14 @@ var HomePage = React.createClass({
 
     componentWillMount: function() {
       getUser(this.state.user);
-      console.log("componentWillMount");
-      console.log(this.state.user.firstName);
     },
 
     componentDidMount: function() {
       getUser(this.state.user);
-      console.log("componentDidMount");
-      console.log(this.state.user.firstName);
       document.title = this.props.title;
+      this.setState({
+        userEmail: this.state.user.email
+      });
     },
 
     searchUser: function(email) {
@@ -163,19 +170,22 @@ var HomePage = React.createClass({
 
     render: function() {
         var loginCondition;
+        var buttonText;
         if( this.state.user.email != null && this.state.user.firstName != null && this.state.user.lastName != null){
           loginCondition = <UserInfo user={this.state.user}/>
+          buttonText = "SIGN IN";
         }else{
           loginCondition = <EmailInput searchUser={this.searchUser} />
+          buttonText = "NEXT";
         }
 
         return(
             <div >
               <HeaderImg url = {url} />
-              <div className={"logincomponent "+ this.state.shake}>
+              <div className="logincomponent">
                 {loginCondition}
                 <PasswordInput getPassword={this.getPassword} />
-                <NextButton text="NEXT" validateUser={this.validateUser} />
+                <NextButton text={buttonText} validateUser={this.validateUser} />
               </div>
               <HelpLink text="Need help?" />
               <Footer />
@@ -187,10 +197,10 @@ var HomePage = React.createClass({
 var UserInfo= React.createClass({
   render: function(){
     return(
-          <div>
-            <img src={this.props.user.pic} />
-            <p>{this.props.user.firstName} {this.props.user.lastName}</p>
-            <p>{this.props.user.email}</p>
+          <div className="userinfo row">
+            <img className = "center-block" src={this.props.user.pic} />
+            <p className = "p1 text-center">{this.props.user.firstName} {this.props.user.lastName}</p>
+            <p className = "p2 text-center">{this.props.user.email}</p>
           </div>
     );
   }
@@ -226,11 +236,13 @@ var UserPage = React.createClass({
 var NavBar = React.createClass({
     render: function(){
       return(
-        <nav>
-          <a href="#"><img alt="help" src="imgs/nav/help.png" /></a>
-          <a href="#"><img alt="notifications" src="imgs/nav/notifications.png" /></a>
-          <a href="#"><img alt="apps" src="imgs/nav/apps.png" /></a>
-          <a href="#"><img alt="icon" src={this.props.user.icon} /></a>
+        <nav className="navbar navbar-fixed-top">
+          <ul className="nav navbar-nav navbar-right" >
+            <li><a href="#"><img className="img1" alt="help" src="imgs/nav/help.png" /></a></li>
+            <li><a href="#"><img className="img2" alt="notifications" src="imgs/nav/notifications.png" /></a></li>
+            <li><a href="#"><img className="img3" alt="apps" src="imgs/nav/apps.png" /></a></li>
+            <li><a href="#"><img className="img4" alt="icon" src={this.props.user.icon} /></a></li>
+          </ul>
         </nav>
       );
     }
@@ -250,4 +262,5 @@ router.addRoute('user/:id', function(id) {
         document.getElementById('container')
     );
 });
+
 router.start();
