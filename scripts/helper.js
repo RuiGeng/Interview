@@ -7,7 +7,7 @@ function saveUser(user) {
     } else {
         // Sorry! No Web Storage support..
     }
-}
+};
 
 function getUser(user) {
     if (typeof(Storage) !== "undefined") {
@@ -16,7 +16,21 @@ function getUser(user) {
         user.email = localStorage.getItem("emailAddress");
         user.pic = localStorage.getItem("pic");
     } else {
-        return false;
+      user.firstName = "";
+      user.lastName = "";
+      user.email = "";
+      user.pic = "";
     }
-    return true;
+};
+
+function removeSakeLogincomponent(e){
+  var target = e.target;
+  var grandparent = target.parentElement.parentElement;
+  grandparent.classList.remove("invalid");
+}
+
+function sakeLogincomponent(e){
+  var target = event.target;
+  var grandparent = target.parentElement.parentElement;
+  grandparent.classList.add("invalid");
 }

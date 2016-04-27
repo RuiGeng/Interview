@@ -51,4 +51,28 @@ body {
     padding-left: 50px;
     padding-top: 2px; }
 
+.invalid {
+  outline-color: red;
+  -webkit-animation-name: shake;
+  -webkit-animation-duration: 0.6s;
+  animation-name: shake;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes shake {
+  0% {
+    left: -10px; }
+  16% {
+    left: 9px; }
+  33% {
+    left: -6px; }
+  50% {
+    left: 5px; }
+  66% {
+    left: -2px; }
+  83% {
+    left: 1px; }
+  100% {
+    left: 0; } }
+
 /*# sourceMappingURL=main.css.map */

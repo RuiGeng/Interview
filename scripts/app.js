@@ -114,7 +114,7 @@ var Footer = React.createClass({
 var HomePage = React.createClass({
     getInitialState: function() {
         return {
-            user: [],
+            user: {firstName: "", lastName: "", email: "", pic: ""},
             userEmail: "",
             userPassword: ""
         };
@@ -122,9 +122,14 @@ var HomePage = React.createClass({
 
     componentWillMount: function() {
       getUser(this.state.user);
+      console.log("componentWillMount");
+      console.log(this.state.user.firstName);
     },
 
     componentDidMount: function() {
+      getUser(this.state.user);
+      console.log("componentDidMount");
+      console.log(this.state.user.firstName);
       document.title = this.props.title;
     },
 
@@ -143,29 +148,35 @@ var HomePage = React.createClass({
         });
     },
 
-    validateUser: function() {
+    validateUser: function(event) {
+      if(this.state.user.email != null && this.state.user.firstName != null && this.state.user.lastName != null){
         if(this.state.user.email === this.state.userEmail
            && this.state.user.password === this.state.userPassword) {
              saveUser(this.state.user);
-             window.location.assign("#users/" + this.state.user.id);
-        } else {
-            alert("NG");
-        };
+             window.location.assign("#user/" + this.state.user.id);
+           } else {
+           };
+      }
+      else{
+      }
     },
 
     render: function() {
         var loginCondition;
-        if(this.state.user.email){
+        if( this.state.user.email != null && this.state.user.firstName != null && this.state.user.lastName != null){
           loginCondition = <UserInfo user={this.state.user}/>
-        } else{
+        }else{
           loginCondition = <EmailInput searchUser={this.searchUser} />
         }
+
         return(
             <div >
               <HeaderImg url = {url} />
-              {loginCondition}
-              <PasswordInput getPassword={this.getPassword} />
-              <NextButton text="NEXT" validateUser={this.validateUser} />
+              <div className={"logincomponent "+ this.state.shake}>
+                {loginCondition}
+                <PasswordInput getPassword={this.getPassword} />
+                <NextButton text="NEXT" validateUser={this.validateUser} />
+              </div>
               <HelpLink text="Need help?" />
               <Footer />
             </div>
@@ -233,7 +244,7 @@ router.addRoute('', function() {
     );
 });
 
-router.addRoute('users/:id', function(id) {
+router.addRoute('user/:id', function(id) {
     ReactDOM.render(
         <UserPage title="Dashboard" userId={id} service={userService}/>,
         document.getElementById('container')
