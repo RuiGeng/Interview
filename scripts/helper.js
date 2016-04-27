@@ -32,14 +32,35 @@ function getUser(user) {
     }
 };
 
-function removeSakeLogincomponent(e){
-  var target = e.target;
-  var grandparent = target.parentElement.parentElement;
-  grandparent.classList.remove("invalid");
-}
-
-function sakeLogincomponent(e){
-  var target = event.target;
-  var grandparent = target.parentElement.parentElement;
-  grandparent.classList.add("invalid");
+shakeElement = function(element) {
+    var x = -1;
+    var marginLeft = element.getBoundingClientRect().left;
+    interval = setInterval(function() {
+        if (x == -1) {
+            element.style.margin="auto";
+        } else {
+            switch (x) {
+                case 0:
+                    element.style.marginLeft = (marginLeft - 10) + "px";
+                    break;
+                case 1:
+                    element.style.marginLeft = (marginLeft + 20) + "px";
+                    break;
+                case 2:
+                    element.style.marginLeft = (marginLeft - 10) + "px";
+                    break;
+                case 3:
+                    element.style.marginLeft = (marginLeft + 20) + "px";
+                    break;
+                case 4:
+                    element.style.marginLeft = (marginLeft - 10) + "px";
+                    break;
+                default:
+                    element.style.margin="auto";
+                    clearInterval(interval);
+            }
+        }
+        x++;
+    }, 50);
+    element.style.margin="auto";
 }

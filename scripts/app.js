@@ -26,7 +26,7 @@ var EmailInput = React.createClass({
     render: function() {
         return(
           <div className = "emailinput row" >
-            <input type = "email" className = "center-block" placeholder="EMAIL" onBlur={this.getUserEmail} />
+            <input id="emailinput" type = "email" className = "center-block" placeholder="EMAIL" onBlur={this.getUserEmail} />
           </div>
         );
     }
@@ -50,7 +50,7 @@ var PasswordInput = React.createClass({
     render: function() {
         return(
             <div className = "passwordinput row" >
-              <input type = "password" className = "center-block" placeholder="PASSWORD" onBlur={this.getUserPassword} />
+              <input id="passwordinput" type = "password" className = "center-block" placeholder="PASSWORD" onBlur={this.getUserPassword} />
             </div>
         );
     }
@@ -156,22 +156,26 @@ var HomePage = React.createClass({
     },
 
     validateUser: function(event) {
-      if(this.state.user.email != null && this.state.user.firstName != null && this.state.user.lastName != null){
+      if(this.state.user != null && this.state.user.email != null && this.state.user.firstName != null && this.state.user.lastName != null){
         if(this.state.user.email === this.state.userEmail
            && this.state.user.password === this.state.userPassword) {
              saveUser(this.state.user);
              window.location.assign("#user/" + this.state.user.id);
            } else {
+             var target = document.getElementById('passwordinput');
+             shakeElement(target);
            };
       }
       else{
+        var target = document.getElementById('emailinput');
+        shakeElement(target);
       }
     },
 
     render: function() {
         var loginCondition;
         var buttonText;
-        if( this.state.user.email != null && this.state.user.firstName != null && this.state.user.lastName != null){
+        if( this.state.user != null && this.state.user.email != null && this.state.user.firstName != null && this.state.user.lastName != null){
           loginCondition = <UserInfo user={this.state.user}/>
           buttonText = "SIGN IN";
         }else{
