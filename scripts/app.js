@@ -80,7 +80,7 @@ var ApplicationListItem = React.createClass({
     render: function () {
         return (
           <div className = "col-lg-4 col-md-4 col-sm-4 col-xs-6 application__item" >
-            <img className ="applicaiont_logo" src = {this.props.application.src} />
+            <a href="#"><img className ="application_logo" src = {this.props.application.src} /></a>
           </div>
         );
     }
