@@ -1,111 +1,199 @@
 $darkish-blue: #00479f;
-body {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 300;
-    margin-top: 60px;
-    .headerimg {
-        img {
-            width: 250px;
-            height: 123.5px;
-        }
-    }
-    .emailinput {
-        margin-top: 178.5px;
-        input {
-            background: url("../imgs/input/group-2.png");
-            background-repeat: no-repeat;
-            background-position: 15px 16px;
-        }
-    }
-    .passwordinput {
-        margin-top: 20px;
-        input {
-            background: url("../imgs/input/group.png");
-            background-repeat: no-repeat;
-            background-position: 15px 16px;
-        }
-    }
-    .nextbutton {
-        margin-top: 30px;
-        button {
-            width: 300px;
-            height: 55px;
-            border: 0;
-            border-radius: 100px;
-            background-color: #00479f;
-            font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-            font-size: 17px;
-            font-weight: bold;
-            color: #ffffff;
-        }
-    }
-    .helplink {
-        margin-top: 10px;
-        font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        font-size: 13px;
-        color: $darkish-blue;
-    }
-    .userinfo{
-      font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-      font-size: 20px;
-      color: #000000;
-      img{
-        width: 100px;
-        height: 100px;
-        margin-top: 52.5px;
-      }
-      .p1{
-        font-weight: bold;
-        margin-top: 30px;
-        margin-bottom: -8px;
-      }
-      .p2 {
-      }
-    }
-    .navbar{
-      margin-top: 20px;
-      img{
-        width: 20px;
-        height: 20px;
-        margin-top: 12px;
-        margin-right: 0px;
-        margin-left: -15px;
-      }
-      .img4{
-        width: 40px;
-        height: 40px;
-        margin-top: 0px;
-        margin-right: 20px;
-      }
-    }
-    .applicationcontainer{
-      width: 550px;
-    }
-    .application{
-      width: 130px;
-      height: 130px;
-      background-color: #ffffff;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-      margin: 20px;
-    }
 
-    footer {
-        font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        font-size: 12px;
-        color: #000000;
-        position: absolute;
-        margin-top: 130px;
-        width: 100%;
+/* title block component */
+.title{
+  width: 100%;
+  height: auto;
+  margin-top: 60px;
+}
+
+/* title element */
+.title__logo{
+  width: 250px;
+  height: 123.5px;
+}
+
+/*title modifier */
+.title--center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* main block */
+.main{
+  width: auto;
+  height: auto;
+}
+
+/*main modifier */
+.main--font{
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: #000000;
+}
+
+/*main modifier */
+.main--center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* userinfo block */
+.userinfo{
+  width: auto;
+  height: auto;
+}
+
+/* userlogo block element */
+.userinfo_logo{
+  width: 100px;
+  height: 100px;
+  margin-top: 52.5px;
+}
+
+/* userlogo block element */
+.userinfor__name{
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: -5px;
+  text-align: center;
+}
+
+/* userlogo block element */
+.userinfor__email{
+  margin-top: 0px;
+  text-align: center;
+}
+
+/* userlogo block modifier */
+.userinfo--font{
+  font-family: "HelveticaNeue", "Helvetica Neue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 20px;
+  color: #000000;
+}
+
+
+/* mainlogin block */
+.mainlogin{
+  width: 300px;
+  height: 55px;
+  border-radius: 100px;
+  border: solid 1px $darkish-blue;
+  font-size: 14px;
+}
+
+/* mainlogin block element */
+.mainlogin__emailinput{
+  margin-top: 178.5px;
+  padding-left: 50px;
+  background: url("../imgs/input/group-2.png");
+  background-repeat: no-repeat;
+  background-position: 15px 16px;
+}
+
+/* mainlogin block element */
+.mainlogin__passwdinput{
+  margin-top: 20px;
+  padding-left: 50px;
+  background: url("../imgs/input/group.png");
+  background-repeat: no-repeat;
+  background-position: 15px 16px;
+}
+
+/* mainlogin block element */
+.mainlogin__nextbtn{
+  margin-top: 30px;
+  background-color: #00479f;
+  font-weight: bold;
+  font-size: 17px;
+  color: #ffffff;
+}
+
+/* mainlogin block element */
+.mainlogin__helplink{
+  margin-top: 10px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* footer block component */
+.footer{
+  position: absolute;
+  margin-top: 130px;
+  width: 100%;
+}
+
+/* footer element */
+.footer__copyright{
+  margin: auto;
+}
+
+/*footer modifier */
+.footer--font{
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 12px;
+  color: #000000;
+}
+
+.footer--center{
+  text-align: center;
+}
+
+
+/* manu block component */
+.menu{
+  margin-top: 20px;
+}
+
+.menu__row {
+  width: 90%;
+  font-size: 0;
+}
+
+.menu__link {
+  width: 20px;
+  height: 20px;
+  margin-top: 12px;
+  margin-right: 0px;
+  margin-left: -15px;
+}
+
+.menu__logo {
+  width: 40px;
+  height: 40px;
+  margin-top: 0px;
+  margin-right: 20px;
+  margin-left: 0px;
+}
+
+/* manu block component */
+@media (min-width: 580px) {
+  .applications{
+  margin-top: 55.5px;
+  width: 510px;
+ }
+}
+
+.application__item{
+  width: 130px;
+  height: 130px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  text-align: center;
+}
+
+.applicaiont_logo{
+  margin-top: 26px;
+}
+
+.navbar-fixed-top{
+  .navbar-nav{
+    li{
+      a:hover{
+        background-color: #ffffff;
+      }
     }
-    input {
-        width: 300px;
-        height: 55px;
-        border-radius: 100px;
-        border: solid 1px $darkish-blue;
-        font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        font-size: 14px;
-        color: #000000;
-        padding-left: 50px;
-        padding-top: 2px;
-    }
+  }
 }

@@ -1,8 +1,8 @@
-var HeaderImg = React.createClass({
+var HeaderLogo = React.createClass({
     render: function() {
         return(
-            <div className = "headerimg row" >
-              <img className = "center-block" src = {this.props.url} />
+            <div className = "title row" >
+              <img className = "title__logo title--center" src = {this.props.url} />
             </div>
         );
     }
@@ -25,8 +25,8 @@ var EmailInput = React.createClass({
 
     render: function() {
         return(
-          <div className = "emailinput row" >
-            <input id="emailinput" type = "email" className = "center-block" placeholder="EMAIL" onBlur={this.getUserEmail} />
+          <div className = "row" >
+            <input id="emailinput" type = "email" className = "mainlogin mainlogin__emailinput main--center" placeholder="EMAIL" onBlur={this.getUserEmail} />
           </div>
         );
     }
@@ -49,18 +49,18 @@ var PasswordInput = React.createClass({
 
     render: function() {
         return(
-            <div className = "passwordinput row" >
-              <input id="passwordinput" type = "password" className = "center-block" placeholder="PASSWORD" onBlur={this.getUserPassword} />
+            <div className = "row" >
+              <input id="passwordinput" type = "password" className = "mainlogin mainlogin__passwdinput main--center" placeholder="PASSWORD" onBlur={this.getUserPassword} />
             </div>
         );
     }
 });
 
-var NextButton = React.createClass({
+var EnterButton = React.createClass({
     render: function() {
         return(
-            <div className = "nextbutton row" >
-              <button type="button" className = "center-block" onClick={this.props.validateUser}>{this.props.text}</button>
+            <div className = "row" >
+              <button type="button" className = "mainlogin mainlogin__nextbtn main--center" onClick={this.props.validateUser}>{this.props.text}</button>
             </div>
         );
     }
@@ -69,7 +69,7 @@ var NextButton = React.createClass({
 var HelpLink = React.createClass({
     render: function() {
         return(
-            <div className = "helplink row text-center" >
+            <div className = "row mainlogin__helplink" >
               <a href="#">{this.props.text}</a>
             </div>
         );
@@ -79,8 +79,8 @@ var HelpLink = React.createClass({
 var ApplicationListItem = React.createClass({
     render: function () {
         return (
-          <div className = "col-lg-4 col-md-4 col-sm-4 col-xs-6 application" >
-            <img src = {this.props.application.src} />
+          <div className = "col-lg-4 col-md-4 col-sm-4 col-xs-6 application__item" >
+            <img className ="applicaiont_logo" src = {this.props.application.src} />
           </div>
         );
     }
@@ -94,7 +94,7 @@ var ApplicationList = React.createClass({
             );
         });
         return (
-          <div className="applicationcontainer center-block">
+          <div className="applications container">
             <div className="row">
               {items}
             </div>
@@ -106,8 +106,8 @@ var ApplicationList = React.createClass({
 var Footer = React.createClass({
     render: function() {
         return(
-            <footer className = "row text-center">
-              <p>&copy; Scientific Technologies Corporation 2016</p>
+            <footer className = "footer footer--font footer--center row">
+              <p className = "footer__copyright">&copy; Scientific Technologies Corporation 2016</p>
             </footer>
         );
     }
@@ -185,13 +185,13 @@ var HomePage = React.createClass({
 
         return(
             <div >
-              <HeaderImg url = {url} />
-              <div className="logincomponent">
+              <HeaderLogo url = {url} />
+              <div className="main main--font row">
                 {loginCondition}
                 <PasswordInput getPassword={this.getPassword} />
-                <NextButton text={buttonText} validateUser={this.validateUser} />
+                <EnterButton text={buttonText} validateUser={this.validateUser} />
+                <HelpLink text="Need help?" />
               </div>
-              <HelpLink text="Need help?" />
               <Footer />
             </div>
         );
@@ -201,10 +201,10 @@ var HomePage = React.createClass({
 var UserInfo= React.createClass({
   render: function(){
     return(
-          <div className="userinfo row">
-            <img className = "center-block" src={this.props.user.pic} />
-            <p className = "p1 text-center">{this.props.user.firstName} {this.props.user.lastName}</p>
-            <p className = "p2 text-center">{this.props.user.email}</p>
+          <div className="main userinfo userinfo--font row">
+            <img className = "userinfo_logo main--center" src={this.props.user.pic} />
+            <p className = "userinfor__name">{this.props.user.firstName} {this.props.user.lastName}</p>
+            <p className = "userinfor__email">{this.props.user.email}</p>
           </div>
     );
   }
@@ -229,7 +229,7 @@ var UserPage = React.createClass({
         return(
             <div>
                 <NavBar user={this.state.user}/>
-                <HeaderImg url = {url} />
+                <HeaderLogo url = {url} />
                 <ApplicationList applications= {imgs} />
                 <Footer />
             </div>
@@ -240,12 +240,12 @@ var UserPage = React.createClass({
 var NavBar = React.createClass({
     render: function(){
       return(
-        <nav className="navbar navbar-fixed-top">
+        <nav className="navbar navbar-fixed-top menu">
           <ul className="nav navbar-nav navbar-right" >
-            <li><a href="#"><img className="img1" alt="help" src="imgs/nav/help.png" /></a></li>
-            <li><a href="#"><img className="img2" alt="notifications" src="imgs/nav/notifications.png" /></a></li>
-            <li><a href="#"><img className="img3" alt="apps" src="imgs/nav/apps.png" /></a></li>
-            <li><a href="#"><img className="img4" alt="icon" src={this.props.user.icon} /></a></li>
+            <li><a href="#"><img className="menu__link" alt="help" src="imgs/nav/help.png" /></a></li>
+            <li><a href="#"><img className="menu__link" alt="notifications" src="imgs/nav/notifications.png" /></a></li>
+            <li><a href="#"><img className="menu__link" alt="apps" src="imgs/nav/apps.png" /></a></li>
+            <li><a href="#"><img className="menu__logo" alt="icon" src={this.props.user.icon} /></a></li>
           </ul>
         </nav>
       );

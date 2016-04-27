@@ -37,7 +37,7 @@ shakeElement = function(element) {
     var marginLeft = element.getBoundingClientRect().left;
     interval = setInterval(function() {
         if (x == -1) {
-            element.style.margin="auto";
+            element.style.marginLeft="auto";
         } else {
             switch (x) {
                 case 0:
@@ -56,11 +56,11 @@ shakeElement = function(element) {
                     element.style.marginLeft = (marginLeft - 10) + "px";
                     break;
                 default:
-                    element.style.margin="auto";
+                    element.style.marginLeft="auto";
                     clearInterval(interval);
             }
         }
         x++;
     }, 50);
-    element.style.margin="auto";
+    element.style.marginLeft="auto";
 }
