@@ -1,5 +1,6 @@
+/* userService emulate server */
 userService = (function() {
-
+/* get the user information by email from user data base */
  var findByEmail = function(email) {
    var deferred = $.Deferred();
    var user = null;
@@ -14,6 +15,7 @@ userService = (function() {
    return deferred.promise();
   },
 
+/* get the user information by user id from user data base */
   findById = function(id) {
     var deferred = $.Deferred();
     var user = null;
@@ -28,6 +30,7 @@ userService = (function() {
     return deferred.promise();
    },
 
+/* user data base */
    users = [{
     "id": 1,
     "firstName": "Jeffery",
@@ -52,8 +55,13 @@ userService = (function() {
  };
 }());
 
+/* title logo url   */
 var url = 'imgs/washington-department-of-health-2151214158-std.png';
 
+/* logo bar url   */
+var logobarUrl = 'imgs/logobar.png';
+
+/* user applications logo url  */
 var imgs = [{
  "id": 1,
  "src": "imgs/app/iweb.png"

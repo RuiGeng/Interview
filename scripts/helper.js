@@ -1,3 +1,4 @@
+/* save user information to local Storage space */
 function saveUser(user) {
     if (typeof(Storage) !== "undefined") {
         localStorage.setItem("id", user.id);
@@ -12,6 +13,7 @@ function saveUser(user) {
     }
 };
 
+/* get user information from local Storage space */
 function getUser(user) {
     if (typeof(Storage) !== "undefined") {
         user.id = localStorage.getItem("id");
@@ -32,6 +34,7 @@ function getUser(user) {
     }
 };
 
+/* shake animation by element fuction */
 shakeElement = function(element) {
     var x = -1;
     var marginLeft = element.getBoundingClientRect().left;
