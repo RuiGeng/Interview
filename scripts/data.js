@@ -58,6 +58,9 @@ userService = (function() {
 /* title logo url   */
 var url = 'imgs/washington-department-of-health-2151214158-std.png';
 
+/* logo bar url   */
+var logobarUrl = 'imgs/logobar.png';
+
 /* user applications logo url  */
 var imgs = [{
  "id": 1,

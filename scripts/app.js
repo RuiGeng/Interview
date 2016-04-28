@@ -196,12 +196,15 @@ var HomePage = React.createClass({
     render: function() {
         var loginCondition;
         var buttonText;
+        var logobar;
         if( this.state.user != null && this.state.user.email != null && this.state.user.firstName != null && this.state.user.lastName != null){
-          loginCondition = <UserInfo user={this.state.user}/>
+          loginCondition = <UserInfo user={this.state.user}/>;
           buttonText = "SIGN IN";
+          logobar = <LogoBar logo={logobarUrl} />;
         }else{
-          loginCondition = <EmailInput searchUser={this.searchUser} />
+          loginCondition = <EmailInput searchUser={this.searchUser} />;
           buttonText = "NEXT";
+          logobar = "";
         }
 
         return(
@@ -212,6 +215,7 @@ var HomePage = React.createClass({
                 <PasswordInput getPassword={this.getPassword} />
                 <EnterButton text={buttonText} validateUser={this.validateUser} />
                 <HelpLink text="Need help?" />
+                {logobar}
               </div>
               <Footer />
             </div>
@@ -282,6 +286,16 @@ var NavBar = React.createClass({
     }
 });
 
+/* user applicaions logo bar componnet */
+var LogoBar = React.createClass({
+  render: function(){
+    return(
+      <div className ="row" >
+        <img className ="mainlogin__logobar main--center" src = {this.props.logo} />
+      </div>
+    );
+  }
+});
 
 router.addRoute('', function() {
     ReactDOM.render(

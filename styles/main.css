@@ -98,6 +98,12 @@
   font-size: 13px;
   text-align: center; }
 
+/* mainlogin logobar element */
+.mainlogin__logobar {
+  width: 400px;
+  height: 21.3px;
+  margin-top: 67px; }
+
 /* footer block component */
 .footer {
   position: absolute;
