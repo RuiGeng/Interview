@@ -1,3 +1,4 @@
+/* page main title log component */
 var HeaderLogo = React.createClass({
     render: function() {
         return(
@@ -8,13 +9,14 @@ var HeaderLogo = React.createClass({
     }
 });
 
+/* user email input component */
 var EmailInput = React.createClass({
     getInitialState: function() {
         return {
             userEmail: ""
         };
     },
-
+    /* use searchUser function to get user information when user input the email address */
     getUserEmail: function(event) {
         var email = event.target.value;
         this.setState({
@@ -32,6 +34,7 @@ var EmailInput = React.createClass({
     }
 });
 
+/* user password input component */
 var PasswordInput = React.createClass({
     getInitialState: function() {
         return {
@@ -39,6 +42,7 @@ var PasswordInput = React.createClass({
         };
     },
 
+/* set user password to state after user input the password */
     getUserPassword: function(event) {
         var passwd = event.target.value;
         this.setState({
@@ -56,6 +60,7 @@ var PasswordInput = React.createClass({
     }
 });
 
+/* next or sign in button component */
 var EnterButton = React.createClass({
     render: function() {
         return(
@@ -66,6 +71,7 @@ var EnterButton = React.createClass({
     }
 });
 
+/* Helper link component */
 var HelpLink = React.createClass({
     render: function() {
         return(
@@ -76,6 +82,7 @@ var HelpLink = React.createClass({
     }
 });
 
+/* user appliction list items component */
 var ApplicationListItem = React.createClass({
     render: function () {
         return (
@@ -86,6 +93,7 @@ var ApplicationListItem = React.createClass({
     }
 });
 
+/* user application list container component */
 var ApplicationList = React.createClass({
     render: function () {
         var items = this.props.applications.map(function (application) {
@@ -103,6 +111,7 @@ var ApplicationList = React.createClass({
     }
 });
 
+/* footer component */
 var Footer = React.createClass({
     render: function() {
         return(
@@ -113,6 +122,7 @@ var Footer = React.createClass({
     }
 });
 
+/* main page component */
 var HomePage = React.createClass({
     getInitialState: function() {
         return {
@@ -128,10 +138,13 @@ var HomePage = React.createClass({
         };
     },
 
+/* before page mount get user from local storage */
     componentWillMount: function() {
       getUser(this.state.user);
     },
 
+  /* before page mount get user from local storage */
+  /* set user information which get from the local storage to the state */
     componentDidMount: function() {
       getUser(this.state.user);
       document.title = this.props.title;
@@ -140,6 +153,8 @@ var HomePage = React.createClass({
       });
     },
 
+/* searchUser function to get userinformation from server */
+/* in this program use data.js instead */
     searchUser: function(email) {
         this.props.service.findByEmail(email).done(function(result) {
             this.setState({
@@ -149,12 +164,18 @@ var HomePage = React.createClass({
         }.bind(this));
     },
 
+/* save the password to the state */
     getPassword: function(passwd) {
         this.setState({
             userPassword: passwd
         });
     },
 
+/* validate user after user click next or sign in button */
+/* if successful save the information to local storage */
+/* if can not find user information from server then shake user email input */
+/* if the password not match email then shake password input */
+/* in this program use data.js instead server */
     validateUser: function(event) {
       if(this.state.user != null && this.state.user.email != null && this.state.user.firstName != null && this.state.user.lastName != null){
         if(this.state.user.email === this.state.userEmail
@@ -198,6 +219,7 @@ var HomePage = React.createClass({
     }
 });
 
+/* user information component */
 var UserInfo= React.createClass({
   render: function(){
     return(
@@ -210,10 +232,17 @@ var UserInfo= React.createClass({
   }
 });
 
+/* user information page */
 var UserPage = React.createClass({
     getInitialState: function() {
         return {
-            user: []
+          user: { id: "",
+                  firstName: "",
+                  lastName: "",
+                  email: "",
+                  password: "",
+                  pic: "",
+                  icon: ""},
         }
     },
 
@@ -237,6 +266,7 @@ var UserPage = React.createClass({
     }
 });
 
+/* user nav component */
 var NavBar = React.createClass({
     render: function(){
       return(
